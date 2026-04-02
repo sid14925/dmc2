@@ -1,0 +1,17 @@
+{
+  "name": "dmc2",
+  "version": "1.0.0",
+  "description": "Devil May Cry (2001) - Mobile Web Port",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host"
+  },
+  "dependencies": {
+    "three": "^0.183.2"
+  },
+  "devDependencies": {
+    "vite": "^8.0.3"
+  }
+}
