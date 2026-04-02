@@ -1,0 +1,12 @@
+{
+  "name": "dmc2",
+  "version": "1.0.0",
+  "description": "Mobile storage management library",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test/storage.test.js"
+  },
+  "keywords": ["mobile", "storage", "localStorage", "indexeddb"],
+  "license": "MIT"
+}
