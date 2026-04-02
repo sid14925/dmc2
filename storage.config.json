@@ -1,0 +1,8 @@
+{
+  "backend": "localStorage",
+  "prefix": "dmc2_",
+  "dbName": "dmc2_store",
+  "storeName": "keyval",
+  "persistOnInit": true,
+  "basePath": "/mobile-data"
+}
