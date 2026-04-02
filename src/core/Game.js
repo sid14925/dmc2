@@ -26,14 +26,13 @@ export class Game {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.shadowMap.enabled = false;
-    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.8;
+    this.renderer.toneMapping = THREE.NoToneMapping;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x1a1a2f);
-    this.scene.fog = new THREE.FogExp2(0x1a1a2f, 0.012);
+    this.scene.background = new THREE.Color(0x222233);
+    this.scene.fog = new THREE.FogExp2(0x222233, 0.008);
 
     // Clock
     this.clock = new THREE.Clock();

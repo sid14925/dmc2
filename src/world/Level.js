@@ -35,13 +35,23 @@ export class Level {
     const idx = Math.min(index, rooms.length - 1);
     rooms[idx]();
 
-    // Add ambient light
-    const ambient = new THREE.AmbientLight(0x334466, 1.2);
+    // Strong ambient light so everything is visible
+    const ambient = new THREE.AmbientLight(0xffffff, 2.0);
     this.roomGroup.add(ambient);
 
-    // Hemisphere light for subtle fill
-    const hemi = new THREE.HemisphereLight(0x4444aa, 0x222222, 0.8);
+    // Hemisphere light for fill
+    const hemi = new THREE.HemisphereLight(0xaaaacc, 0x444444, 1.5);
     this.roomGroup.add(hemi);
+
+    // Strong directional light (main light source - always works on mobile)
+    const dirLight = new THREE.DirectionalLight(0xffeedd, 3.0);
+    dirLight.position.set(5, 10, 5);
+    this.roomGroup.add(dirLight);
+
+    // Secondary directional from opposite side
+    const dirLight2 = new THREE.DirectionalLight(0xccddff, 1.5);
+    dirLight2.position.set(-5, 8, -5);
+    this.roomGroup.add(dirLight2);
 
     this.game.scene.add(this.roomGroup);
   }
