@@ -25,16 +25,15 @@ export class Game {
     });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.enabled = false;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 0.8;
+    this.renderer.toneMappingExposure = 1.8;
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     // Scene
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0a0a0f);
-    this.scene.fog = new THREE.FogExp2(0x0a0a0f, 0.025);
+    this.scene.background = new THREE.Color(0x1a1a2f);
+    this.scene.fog = new THREE.FogExp2(0x1a1a2f, 0.012);
 
     // Clock
     this.clock = new THREE.Clock();

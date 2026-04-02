@@ -36,11 +36,11 @@ export class Level {
     rooms[idx]();
 
     // Add ambient light
-    const ambient = new THREE.AmbientLight(0x111122, 0.3);
+    const ambient = new THREE.AmbientLight(0x334466, 1.2);
     this.roomGroup.add(ambient);
 
     // Hemisphere light for subtle fill
-    const hemi = new THREE.HemisphereLight(0x0a0a20, 0x0a0a0a, 0.2);
+    const hemi = new THREE.HemisphereLight(0x4444aa, 0x222222, 0.8);
     this.roomGroup.add(hemi);
 
     this.game.scene.add(this.roomGroup);
@@ -49,13 +49,13 @@ export class Level {
   // Room 0: Entrance hall with pillars
   buildEntranceHall() {
     this.bounds = { minX: -8, maxX: 8, minZ: -8, maxZ: 8 };
-    this.buildFloor(16, 16, 0x2a2a2a);
-    this.buildWalls(16, 16, 5, 0x3a2a1a);
+    this.buildFloor(16, 16, 0x4a4a4a);
+    this.buildWalls(16, 16, 5, 0x5a4a3a);
 
     // Pillars
     for (let x = -1; x <= 1; x += 2) {
       for (let z = -1; z <= 1; z += 2) {
-        this.addPillar(x * 4, z * 4, 5, 0x4a3a2a);
+        this.addPillar(x * 4, z * 4, 5, 0x6a5a4a);
       }
     }
 
@@ -66,7 +66,7 @@ export class Level {
     this.addTorch(7.5, 2.5, 7.5);
 
     // Center chandelier light
-    const chandelier = new THREE.PointLight(0xff8844, 1.5, 15);
+    const chandelier = new THREE.PointLight(0xff8844, 4, 25);
     chandelier.position.set(0, 4.5, 0);
     chandelier.castShadow = true;
     chandelier.shadow.mapSize.set(512, 512);
@@ -100,8 +100,8 @@ export class Level {
   // Room 1: Long corridor
   buildCorridorRoom() {
     this.bounds = { minX: -5, maxX: 5, minZ: -12, maxZ: 12 };
-    this.buildFloor(10, 24, 0x222222);
-    this.buildWalls(10, 24, 5, 0x352520);
+    this.buildFloor(10, 24, 0x444444);
+    this.buildWalls(10, 24, 5, 0x554540);
 
     // Pillars along corridor
     for (let z = -10; z <= 10; z += 5) {
@@ -121,8 +121,8 @@ export class Level {
   // Room 2: Cathedral with high ceiling
   buildCathedralRoom() {
     this.bounds = { minX: -10, maxX: 10, minZ: -10, maxZ: 10 };
-    this.buildFloor(20, 20, 0x1a1a2a);
-    this.buildWalls(20, 20, 8, 0x2a2a3a);
+    this.buildFloor(20, 20, 0x3a3a4a);
+    this.buildWalls(20, 20, 8, 0x4a4a5a);
 
     // Grand pillars
     for (let x = -1; x <= 1; x += 2) {
@@ -176,8 +176,8 @@ export class Level {
   // Room 3: Dungeon
   buildDungeonRoom() {
     this.bounds = { minX: -7, maxX: 7, minZ: -7, maxZ: 7 };
-    this.buildFloor(14, 14, 0x1a1a1a);
-    this.buildWalls(14, 14, 4, 0x2a1a1a);
+    this.buildFloor(14, 14, 0x3a3a3a);
+    this.buildWalls(14, 14, 4, 0x4a3a3a);
 
     // Prison cells (cage meshes)
     for (let x = -1; x <= 1; x += 2) {
@@ -218,7 +218,7 @@ export class Level {
     }
 
     // Dim red lighting
-    const redLight = new THREE.PointLight(0xff2200, 1, 12);
+    const redLight = new THREE.PointLight(0xff2200, 4, 20);
     redLight.position.set(0, 3, 0);
     this.roomGroup.add(redLight);
 
@@ -233,8 +233,8 @@ export class Level {
   // Room 4: Boss arena
   buildBossArena() {
     this.bounds = { minX: -12, maxX: 12, minZ: -12, maxZ: 12 };
-    this.buildFloor(24, 24, 0x1a0a0a);
-    this.buildWalls(24, 24, 7, 0x3a1a0a);
+    this.buildFloor(24, 24, 0x3a2a2a);
+    this.buildWalls(24, 24, 7, 0x5a3a2a);
 
     // Lava cracks in floor (emissive lines)
     for (let i = 0; i < 8; i++) {
@@ -293,7 +293,7 @@ export class Level {
     this.roomGroup.add(pentagram);
 
     // Dramatic lighting
-    const mainLight = new THREE.PointLight(0xff4400, 2, 20);
+    const mainLight = new THREE.PointLight(0xff4400, 5, 30);
     mainLight.position.set(0, 6, 0);
     mainLight.castShadow = true;
     this.roomGroup.add(mainLight);
@@ -352,7 +352,7 @@ export class Level {
     // Ceiling
     const ceiling = new THREE.Mesh(
       new THREE.PlaneGeometry(width, depth),
-      new THREE.MeshLambertMaterial({ color: 0x1a1a1a, side: THREE.DoubleSide })
+      new THREE.MeshLambertMaterial({ color: 0x333333, side: THREE.DoubleSide })
     );
     ceiling.rotation.x = Math.PI / 2;
     ceiling.position.y = height;
@@ -413,11 +413,11 @@ export class Level {
     torch.add(flame);
 
     // Light
-    const light = new THREE.PointLight(0xff6633, 1.0, 8);
+    const light = new THREE.PointLight(0xff6633, 3.0, 15);
     light.position.y = 0.35;
     light.castShadow = false; // Save performance
     torch.add(light);
-    this.torchLights.push({ light, baseIntensity: 1.0 });
+    this.torchLights.push({ light, baseIntensity: 3.0 });
 
     torch.position.set(x, y, z);
     this.roomGroup.add(torch);
@@ -440,10 +440,10 @@ export class Level {
     stand.position.y = 0.5;
     brazier.add(stand);
     // Fire light
-    const light = new THREE.PointLight(0xff4400, 2, 10);
+    const light = new THREE.PointLight(0xff4400, 5, 15);
     light.position.y = 1.5;
     brazier.add(light);
-    this.torchLights.push({ light, baseIntensity: 2.0 });
+    this.torchLights.push({ light, baseIntensity: 5.0 });
 
     brazier.position.set(x, 0, z);
     this.roomGroup.add(brazier);
